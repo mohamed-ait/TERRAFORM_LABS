@@ -20,4 +20,3 @@ resource "tls_private_key" "rsa_4096" {
   rsa_bits  = 4096
 }
 
-
