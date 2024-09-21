@@ -21,7 +21,13 @@ resource "tls_private_key" "rsa_4096" {
 }
 
 // Create Key Pair for Connecting EC2 via SSH
-resource "aws_key_pair" "key_pair" {
+resource "aws_key_pair" "ssh_key_pair" {
   key_name   = var.key_name
   public_key = tls_private_key.rsa_4096.public_key_openssh
+}
+
+// Save ssh private key(PEM) file locally
+resource "local_file" "ssh_private_key" {
+  content  = tls_private_key.rsa_4096.private_key_pem
+  filename = var.key_name
 }
