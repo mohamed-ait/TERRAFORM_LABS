@@ -31,3 +31,23 @@ resource "local_file" "ssh_private_key" {
   content  = tls_private_key.rsa_4096.private_key_pem
   filename = var.key_name
 }
+
+# Create a security group
+resource "aws_security_group" "sg_ec2" {
+  name        = "sg_ec2"
+  description = "Security group for EC2"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
