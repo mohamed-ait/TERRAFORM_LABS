@@ -3,6 +3,20 @@ provider "azurerm" {
   features {}
 }
 
+terraform {
+  backend "azurerm" {
+  }
+  required_providers {
+    
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=3.20.0"
+    }
+
+  }
+    required_version = "~> 1.7"
+}
+
 # Create a resource group
 resource "azurerm_resource_group" "arg" {
   name     = var.rg_name
