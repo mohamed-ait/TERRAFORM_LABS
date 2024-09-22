@@ -13,3 +13,17 @@ variable location {
 #############################
 # Azure Key Vault variables #
 #############################
+
+variable "kv_name" {
+  type        = string
+  description = "The name of the Azure Key Vault"
+  default = "akv"
+}
+
+variable "secrets" {
+  type = map(object({
+    value = string
+  }))
+  description = "Define Azure Key Vault secrets"
+  default = {}
+}
