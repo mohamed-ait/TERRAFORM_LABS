@@ -53,13 +53,13 @@ resource "aws_security_group" "sg_ec2" {
 }
 
 resource "aws_instance" "public_instance" {
-  ami                    = "ami-0f5ee92e2d63afc18"
+  ami                    = "ami-0e86e20dae9224db8"
   instance_type          = "t2.micro"
-  key_name               = aws_key_pair.key_pair.key_name
+  key_name               = aws_key_pair.ssh_key_pair.key_name
   vpc_security_group_ids = [aws_security_group.sg_ec2.id]
 
   tags = {
-    Name = "public_instance"
+    Name = "ec2-instance"
   }
 
   root_block_device {
