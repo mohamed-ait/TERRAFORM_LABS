@@ -6,7 +6,7 @@ variable rg_name {
 
 variable location {
   type        = string
-  default     = "eu-west-1"
+  default     = "West Europe"
   description = "region"
 }
 
