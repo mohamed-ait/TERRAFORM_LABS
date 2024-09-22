@@ -1,6 +1,6 @@
 variable rg_name {
   type        = string
-  default     = "rg"
+  default     = "My-Resource-Group"
   description = "resource group name"
 }
 
@@ -17,7 +17,7 @@ variable location {
 variable "kv_name" {
   type        = string
   description = "The name of the Azure Key Vault"
-  default = "akv"
+  default = "My-Azure-Key-Vault"
 }
 
 variable "secrets" {
@@ -26,8 +26,8 @@ variable "secrets" {
   }))
   description = "Define Azure Key Vault secrets"
   default = {
-    "db_password" = { value = "super_secret_password" }
-    "api_key"     = { value = "my_api_key" }
+    "db-password" = { value = "super_secret_password" }
+    "ap-key"     = { value = "my_api_key" }
   }
 }
 
