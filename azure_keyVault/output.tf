@@ -8,6 +8,6 @@ output "key-vault-url" {
   value       = azurerm_key_vault.azureKeyVault.vault_uri
 }
 
-/*output "key-vault-secrets" {
+output "key-vault-secrets" {
   value = values(azurerm_key_vault_secret.secret).*.value
-}*/
+}
