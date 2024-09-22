@@ -25,7 +25,10 @@ variable "secrets" {
     value = string
   }))
   description = "Define Azure Key Vault secrets"
-  default = {}
+  default = {
+    "db_password" = { value = "super_secret_password" }
+    "api_key"     = { value = "my_api_key" }
+  }
 }
 
 variable "policies" {
