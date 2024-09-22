@@ -56,7 +56,7 @@ resource "azurerm_key_vault_access_policy" "policy" {
 # Generate a random password
 resource "random_password" "password" {
   for_each    = var.secrets
-  length      = 5
+  length      = 15
   min_upper   = 2
   min_lower   = 2
   min_numeric = 2
@@ -73,9 +73,8 @@ resource "azurerm_key_vault_secret" "secret" {
   key_vault_id = azurerm_key_vault.azureKeyVault.id
   name         = each.key
   value        = lookup(each.value, "value") != "" ? lookup(each.value, "value") : random_password.password[each.key].result
-  tags         = var.tags
   depends_on = [
-    azurerm_key_vault.key-vault,
-    azurerm_key_vault_access_policy.default_policy,
+    azurerm_key_vault.azureKeyVault,
+    azurerm_key_vault_access_policy.policy,
   ]
 }
